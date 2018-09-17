@@ -20,17 +20,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.boot.test.OutputCapture;
+import org.springframework.boot.test.rule.OutputCapture;
 
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests for {@link SampleSimpleApplication}.
+ * Tests for {@link ZuulProxyApplication}.
  * 
- * @author Dave Syer
- * @author Phillip Webb
+ * @author Debasish Nath
  */
-public class SampleSimpleApplicationTests {
+public class ZuulProxyApplicationTests {
 
 	@Rule
 	public OutputCapture outputCapture = new OutputCapture();
@@ -54,16 +53,16 @@ public class SampleSimpleApplicationTests {
 
 	@Test
 	public void testDefaultSettings() throws Exception {
-		SampleSimpleApplication.main(new String[0]);
+		ZuulProxyApplication.main(new String[0]);
 		String output = this.outputCapture.toString();
-		assertTrue("Wrong output: " + output, output.contains("Hello Phil"));
+		assertTrue("Wrong output: " + output, output.contains("Hello Deb"));
 	}
 
 	@Test
 	public void testCommandLineOverrides() throws Exception {
-		SampleSimpleApplication.main(new String[] { "--name=Gordon" });
+		ZuulProxyApplication.main(new String[] { "--name=Nath" });
 		String output = this.outputCapture.toString();
-		assertTrue("Wrong output: " + output, output.contains("Hello Gordon"));
+		assertTrue("Wrong output: " + output, output.contains("Hello Nath"));
 	}
 
 }

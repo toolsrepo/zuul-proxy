@@ -18,17 +18,17 @@ package com.github.toolsrepo.zuul.simple;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Tests for {@link SampleSimpleApplication}.
+ * Tests for {@link ZuulProxyApplication}.
  * 
  * @author Dave Syer
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SampleSimpleApplication.class)
-public class SpringTestSampleSimpleApplicationTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = ZuulProxyApplication.class)
+public class SpringTestZuulProxyApplicationTests {
 
 	@Test
 	public void testContextLoads() throws Exception {
