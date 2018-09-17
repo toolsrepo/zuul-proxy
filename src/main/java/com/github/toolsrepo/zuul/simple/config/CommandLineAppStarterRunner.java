@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class Loader implements CommandLineRunner {
+public class CommandLineAppStarterRunner implements CommandLineRunner {
 
     private HelloService helloService;
 
-    public Loader(HelloService helloService){
+    public CommandLineAppStarterRunner(HelloService helloService){
 
         this.helloService = helloService;
     }
