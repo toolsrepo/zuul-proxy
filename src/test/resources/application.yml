@@ -7,5 +7,5 @@ zuul:
  routes:
    webservice:
     path: /students/**
-    url: http://localhost:8082/soap-server/students
+    url: http://localhost:8082/ws/students.wsdl
 name: Deb
