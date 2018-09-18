@@ -22,9 +22,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertTrue;
@@ -35,7 +39,7 @@ import static org.junit.Assert.assertTrue;
  * @author Debasish Nath
  */
 @RunWith(SpringRunner.class)
-public class ZuulProxyApplicationTests {
+public class ZuulProxyApplicationOverrideTests {
 
 	@Rule
 	public OutputCapture outputCapture = new OutputCapture();
@@ -43,6 +47,7 @@ public class ZuulProxyApplicationTests {
 	private String profiles;
 
 	ConfigurableApplicationContext context;
+
 
 	@Before
 	public void init() {
@@ -54,16 +59,17 @@ public class ZuulProxyApplicationTests {
 		SpringApplication.exit(context);
 	}
 
+
 	@Test
-	public void testDefaultSettings() throws Exception {
+	public void testCommandLineOverrides() throws Exception {
 		SpringApplication springApplication = new SpringApplicationBuilder()
 				.sources(ZuulProxyApplication.class)
 				.build();
-		context = springApplication.run();
-		String output = this.outputCapture.toString();
-		assertTrue("Wrong output: " + output, output.contains("Hello Deb"));
-	}
+		context = springApplication.run("--name=Nath");
 
+		String output = this.outputCapture.toString();
+		assertTrue("Wrong output: " + output, output.contains("Hello Nath"));
+	}
 
 
 }
