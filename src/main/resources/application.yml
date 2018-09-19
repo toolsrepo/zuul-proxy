@@ -6,7 +6,9 @@ spring:
 zuul:
  routes:
    webservice:
-    path: /students/**
+    path: /ws/**
     url: http://localhost:8082/ws/students.wsdl
 
+server:
+ port: 8081
 
